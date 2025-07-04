@@ -13,3 +13,40 @@ section {
 h1 {
   color: #BAF2E9;
 }
+
+/* Navbar styles for beginners */
+nav {
+  display: flex; /* Places items in a row */
+  justify-content: space-between; /* Space between title and links */
+  align-items: center; /* Vertically center items */
+  background-color: #333; /* Dark background */
+  padding: 10px 20px; /* Space inside navbar */
+}
+
+.nav-title {
+  color: #fff; /* White text for title */
+  font-size: 1.5em; /* Larger font for title */
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none; /* Removes bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Places links in a row */
+}
+
+.nav-links li {
+  margin-left: 20px; /* Space between links */
+}
+
+.nav-links a {
+  color: #fff; /* White text for links */
+  text-decoration: none; /* Removes underline */
+  font-size: 1em;
+  transition: color 0.2s; /* Smooth color change on hover */
+}
+
+.nav-links a:hover {
+  color: #BAF2E9; /* Light blue on hover */
+}
