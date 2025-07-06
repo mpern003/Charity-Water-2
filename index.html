@@ -1,29 +1,166 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>LiveLab 4 Demo</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charity: Water – Real Impact</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Proxima Nova', sans-serif;
+      background-color: #fdf9f3;
+      color: #1e1e1e;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #fffbe8;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #f7c600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #1e1e1e;
+      font-weight: bold;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+      background-color: #fff;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      min-width: 300px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .hero-content {
+      flex: 1 1 300px;
+      padding: 1rem 2rem;
+    }
+
+    .hero-content h2 {
+      font-size: 2.5rem;
+      color: #ffc700;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      color: #2c3e50;
+      font-size: 1.1rem;
+    }
+
+    .donate-box {
+      margin-top: 2rem;
+      background-color: #d8ebf9;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .donate-box h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .donate-box input[type="text"] {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 100px;
+      margin-right: 0.5rem;
+    }
+
+    .donate-box label {
+      margin: 0 0.5rem;
+    }
+
+    .donate-box button {
+      background-color: #ffd700;
+      color: #000;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .footer-cta {
+      text-align: center;
+      padding: 2rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .footer-cta a {
+      color: #1f78ff;
+      text-decoration: none;
+    }
+  </style>
 </head>
-
 <body>
-  <!-- Responsive navbar starts here -->
-  <nav>
-    <!-- Website title on the left -->
-    <span class="nav-title">LiveLab 4 Demo</span>
-    <!-- Navigation links on the right -->
-    <ul class="nav-links">
-      <li><a href="#about">About Me</a></li>
-    </ul>
-  </nav>
-  <!-- Responsive navbar ends here -->
-  <section> 
-    <h1> Hello everyone </h1>
-    <p> This is a test site </p>
-  </section>
-  <script src="script.js"></script>
-</body>
 
+  <header>
+    <h1>
+      <!-- Charity: Water logo for the header -->
+      <!-- Logo image styled as a small logo in the corner -->
+      <img src="logo charity.png" alt="Charity: Water Logo" style="height:35px; width:auto; vertical-align:middle; margin: right 10px;">
+    </h1>
+    <nav>
+      <a href="#">HOME</a>
+      <a href="#">OUR MISSION</a>
+      <a href="#">GET INVOLVED</a>
+      <a href="#">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-image">
+      <img src="https://d35lvrk9fb4ftj.cloudfront.net/eyJidWNrZXQiOiJkcm9wbWFyayIsImtleSI6IjUyMDQzLzU5MzhhNzU1Zjc5MmUzN2FiOGNiYzk0YzVkMzIzMDUzN2ViYTU4NmYxY2JlYThmNTQ1OTk1NjdiODM2NzI2ODIvcHJldmlldy80OTk2X0V0aGlvcGlhXzIwMTlfQ0ctLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NjAwLCJoZWlnaHQiOjYwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfX19" alt="Child smiling with water" />
+      <p><small>Meet Omary! He no longer has to walk miles for water, thanks to supporters like you!</small></p>
+    </div>
+    <div class="hero-content">
+      <h2>REAL IMPACT STARTS WITH YOU.</h2>
+      <p>
+        At Charity: Water, your passion can become powerful and lasting change.
+        Every dollar you give, funds clean water projects you can track and see.
+        Be the reason a child gets to go to school. Be the moment change begins.
+      </p>
+
+      <div class="donate-box">
+        <h3>Change a life today!</h3>
+        <p><small>100% of your donation goes directly to clean water projects.</small></p>
+        <label><input type="radio" name="frequency" checked> One-Time</label>
+        <label><input type="radio" name="frequency"> Monthly</label><br><br>
+        <input type="text" placeholder="$" />
+        <button>JOIN TODAY</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-cta">
+    💧 <a href="#">Meet the communities you’ll support →</a>
+  </div>
+
+</body>
 </html>

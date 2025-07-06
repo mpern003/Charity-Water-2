@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charity: Water – Real Impact</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Proxima Nova', sans-serif;
+      background-color: #fdf9f3;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #fffbe8;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #ffc907;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #1e1e1e;
+      font-weight: bold;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+      background-color: #fff;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInHero 1s ease-out forwards;
+      animation-delay: 0.2s;
+    }
+
+    .hero-image {
+      flex: 1 1 400px;
+      min-width: 400px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .hero-content {
+      flex: 1 1 300px;
+      padding: 1rem 2rem;
+    }
+
+    .hero-content h2 {
+      font-size: 3.2rem; /* Make the heading bigger */
+      color: #ffc907;
+      margin-bottom: 1rem;
+      text-align: left; /* Align left */
+      margin-top: -1.2rem; /* Move text further up */
+    }
+
+    @media (max-width: 900px) {
+      .hero-content h2 {
+        font-size: 2.1rem;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .hero-content p {
+      color: #003366;
+      font-size: 1.1rem;
+    }
+
+    .donate-box {
+      margin-top: 2rem;
+      /* Ocean blue gradient background */
+      background: linear-gradient(180deg, #d8ebf9 0%, #77a8bb 60%, #003366 100%);
+      padding: 0.7rem 1.5rem;
+      border-radius: 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      max-width: 450px;
+      min-width: 250px;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      display: block;
+    }
+    .donate-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      background: url('water 1.jpg') center center/cover no-repeat;
+      opacity: 0.25;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .donate-box > * {
+      position: relative;
+      z-index: 1;
+      flex: unset;
+    }
+    /* Remove .donate-box::before and wave keyframes */
+    .donate-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .donate-box p, .donate-box label, .donate-box button, .donate-box input, .donate-box .tier-buttons button {
+      font-size: 0.95rem;
+    }
+    .donate-box input[type="number"] {
+      width: 75%;
+      max-width: 140px;
+      font-size: 0.95rem;
+    }
+    .donate-box label {
+      margin: 0 0.5rem;
+    }
+
+    .donate-box button {
+      background-color: #003366;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    /* Add smooth transitions for buttons and links */
+    .donate-box button, nav a {
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    .donate-box button:hover {
+      background-color: #00509e;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    nav a:hover {
+      color: #003366;
+      transform: translateY(-2px) scale(1.08);
+    }
+
+    /* Add fade-in animation for hero section */
+    @keyframes fadeInHero {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Add a simple hover effect for the logo */
+    header h1 img {
+      transition: transform 0.3s;
+    }
+    header h1 img:hover {
+      transform: rotate(-8deg) scale(1.08);
+    }
+
+    /* Make the text below the hero image use Georgia font */
+    .hero-image p {
+      font-family: Georgia, serif;
+    }
+
+    /* Progress bar styles */
+    #progressContainer {
+      margin: 2.2rem 0 0 0;
+      max-width: 100%;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .hero-image #progressContainer {
+      max-width: 100%;
+      width: 100%;
+      margin-top: 1.2rem;
+    }
+    #progressContainer label {
+      font-size: 1rem;
+      color: #003366;
+    }
+    #progressContainer .progress-bg {
+      background: #e0e0e0;
+      border-radius: 8px;
+      height: 32px; /* Larger height */
+      width: 100%;
+      max-width: 100%;
+      margin: 0.7rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 60%;
+      background: linear-gradient(90deg, #003366, #77A8BB);
+      border-radius: 8px 0 0 8px;
+      transition: width 0.5s;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    #progressBar.increased {
+      background: linear-gradient(90deg, #ffd700, #BF6C46); /* Gold to orange for new progress */
+      /* Gold to orange for new progress */
+    }
+
+    #progressContainer label, #progressContainer > div {
+      font-size: 1.25rem;
+      width: 100%;
+      text-align: left;
+    }
+
+    #progressAmount {
+      font-size: 0.95rem;
+      color: #003366;
+    }
+    #progressLeft {
+      font-size: 0.95rem;
+      color: #BF6C46;
+      margin-left: 8px;
+    }
+
+    /* New styles for the Meet the communities button */
+    .meet-btn {
+      display: inline-block;
+      margin: 0.7rem 0 0 0;
+      padding: 0.4rem 1rem;
+      background: #ffc907;
+      color: #003366;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .meet-btn:hover {
+      background: #ffea80;
+      color: #1e1e1e;
+      transform: scale(1.05);
+    }
+
+    .footer-cta {
+      display: none;
+    }
+
+    .donate-box #thankYouMsg {
+      color: #ffc907 !important;
+    }
+
+    /* Responsive styles for donation box */
+    @media (max-width: 900px) {
+      .donate-box {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        max-width: 95vw;
+        min-width: unset;
+        gap: 0.5rem;
+      }
+    }
+
+    .tier-buttons button {
+      background-color: #fffbe8 !important; /* Beige background */
+      color: #ffc907 !important; /* Yellow numbers */
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      margin: 0 0.3rem;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .tier-buttons button:hover {
+      background-color: #ffe9a7 !important;
+      color: #003366 !important;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>
+      <!-- Charity: Water logo for the header -->
+      <!-- Logo image styled as a small logo in the corner -->
+      <img src="logo charity.png" alt="Charity: Water Logo" style="height:35px; width:auto; vertical-align:middle; margin: right 10px;">
+    </h1>
+    <nav>
+      <a href="#">HOME</a>
+      <a href="#">OUR MISSION</a>
+      <a href="#">GET INVOLVED</a>
+      <a href="#">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-image">
+      <img src="hero image.jpg" />
+      <p><small>Meet Omary! He no longer has to walk miles for water, thanks to supporters like you!</small></p>
+      <!-- Meet the communities button under the hero image phrase -->
+      <a href="#" class="meet-btn">Meet the communities you’ll support 💧 →</a>
+      <!-- Progress bar for donation goal (moved under the button, aligned with hero image) -->
+      <div id="progressContainer">
+        <label for="progress">Community Goal Progress</label>
+        <div class="progress-bg">
+          <div id="progressBar"></div>
+        </div>
+        <div>
+          <span id="progressAmount">$6,000</span> raised of $10,000 goal
+          <span id="progressLeft"></span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <h2>REAL IMPACT STARTS WITH YOU.</h2>
+      <p>
+        At Charity: Water, your passion can become powerful and lasting change.
+        Every dollar you give, funds clean water projects you can track and see.
+        Be the reason a child gets to go to school. Be the moment change begins.
+      </p>
+
+     <div class="donate-box" style="position: relative; overflow: hidden;">
+  <h3 style="margin-top: 2rem;">Change a life today! 🌍</h3>
+  <p><small>100% of your donation goes directly to clean water projects.</small></p>
+
+  <div class="donation-options" style="margin: 1rem 0;">
+    <label><input type="radio" name="frequency" value="one-time" checked /> One-Time</label>
+    <label><input type="radio" name="frequency" value="monthly" /> Monthly</label>
+  </div>
+
+  <div class="tier-buttons" style="margin-bottom: 0.8rem;">
+    <button onclick="setAmount(25)" style="margin: 0 0.3rem;">$25</button>
+    <button onclick="setAmount(50)" style="margin: 0 0.3rem;">$50</button>
+    <button onclick="setAmount(100)" style="margin: 0 0.3rem;">$100</button>
+  </div>
+
+  <input type="number" id="amount" placeholder="$ Enter Amount" style="padding: 0.5rem; width: 70%; border-radius: 10px; border: 1px solid #ccc;" min="1">
+
+  <br><br>
+  <button id="donateBtn" style="background: #003366; padding: 0.6rem 1.2rem; border: none; border-radius: 25px; color: #fff; font-weight: bold; font-size: 1rem; box-shadow: 0 5px 10px rgba(255, 78, 80, 0.3); cursor: pointer;">JOIN TODAY</button>
+
+  <div id="thankYouMsg" style="margin-top: 1rem; font-weight: bold; color: #0a5c2d; display: none;"></div>
+</div>
+
+    </div>
+  </section>
+
+  <!-- Removed the footer cta section as per the change request -->
+
+  <!-- Simple JavaScript for Thank You message and progress bar update -->
+  <script>
+  const donateBtn = document.getElementById('donateBtn');
+  const thankYouMsg = document.getElementById('thankYouMsg');
+  const progressBar = document.getElementById('progressBar');
+  const progressAmount = document.getElementById('progressAmount');
+  const progressLeft = document.getElementById('progressLeft');
+  const donationInput = document.getElementById('amount');
+
+  // Array of thank you messages
+  const thankYouMessages = [
+    "You're changing lives. Thank you! 💛",
+    "Clean water is flowing because of you! 💧",
+    "You just became someone's hero. 🙌",
+    "Hope travels further with your help. ✨",
+    "You've made a real difference today. 💙",
+    "Your support means the world. 🌍",
+    "Thank you for your generosity! 🧡",
+  ];
+
+  let currentAmount = 6000;
+  const goalAmount = 10000;
+  let lastPercent = Math.round((currentAmount / goalAmount) * 100);
+  updateProgressLeft();
+
+  function updateProgressLeft() {
+    let left = goalAmount - currentAmount;
+    if (left > 0) {
+      progressLeft.textContent = ` | $${left.toLocaleString()} left to goal`;
+    } else {
+      progressLeft.textContent = ' | Goal reached!';
+    }
+  }
+
+  function getRandomMessage() {
+    const index = Math.floor(Math.random() * thankYouMessages.length);
+    return thankYouMessages[index];
+  }
+
+  // Set amount from tier buttons
+  function setAmount(val) {
+    donationInput.value = val;
+  }
+
+  // Show thank you and update progress bar on donation
+  function showThankYou() {
+    let donation = parseInt(donationInput.value.replace(/[^0-9]/g, '')) || 0;
+    if (donation > 0) {
+      currentAmount += donation;
+      if (currentAmount > goalAmount) currentAmount = goalAmount;
+      let percent = Math.round((currentAmount / goalAmount) * 100);
+      progressBar.style.width = percent + '%';
+      progressAmount.textContent = '$' + currentAmount.toLocaleString();
+      updateProgressLeft();
+      progressBar.classList.add('increased');
+      setTimeout(() => progressBar.classList.remove('increased'), 800);
+      lastPercent = percent;
+      thankYouMsg.textContent = getRandomMessage();
+      thankYouMsg.style.display = 'block';
+    }
+  }
+
+  donateBtn.addEventListener('click', showThankYou);
+</script>
+</body>
+</html>
+
