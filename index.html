@@ -86,8 +86,8 @@
 
     .donate-box {
       margin-top: 2rem;
-      /* Ocean blue gradient background */
-      background: linear-gradient(180deg, #d8ebf9 0%, #77a8bb 60%, #003366 100%);
+      /* Use a plain background color for readability */
+      background: #d8ebf9;
       padding: 0.7rem 1.5rem;
       border-radius: 18px;
       text-align: center;
@@ -105,15 +105,23 @@
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       width: 100%; height: 100%;
-      background: url('water 1.jpg') center center/cover no-repeat;
-      opacity: 0.25;
+      background: none;
+      opacity: 0;
       z-index: 0;
       pointer-events: none;
     }
-    .donate-box > * {
+    .donate-box-bg-img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.22;
+      z-index: 0;
+      border-radius: 18px;
+      pointer-events: none;
+    }
+    .donate-box > *:not(.donate-box-bg-img) {
       position: relative;
       z-index: 1;
-      flex: unset;
     }
     /* Remove .donate-box::before and wave keyframes */
     .donate-box h3 {
@@ -309,7 +317,7 @@
     <h1>
       <!-- Charity: Water logo for the header -->
       <!-- Logo image styled as a small logo in the corner -->
-      <img src="logo charity.png" alt="Charity: Water Logo" style="height:35px; width:auto; vertical-align:middle; margin: right 10px;">
+      <img src="images/logo charity.png" alt="Charity: Water Logo" style="height:35px; width:auto; vertical-align:middle; margin: right 10px;">
     </h1>
     <nav>
       <a href="#">HOME</a>
@@ -321,7 +329,7 @@
 
   <section class="hero">
     <div class="hero-image">
-      <img src="hero image.jpg" />
+      <img src="images/hero image.jpg" />
       <p><small>Meet Omary! He no longer has to walk miles for water, thanks to supporters like you!</small></p>
       <!-- Meet the communities button under the hero image phrase -->
       <a href="#" class="meet-btn">Meet the communities you’ll support 💧 →</a>
@@ -346,27 +354,29 @@
       </p>
 
      <div class="donate-box" style="position: relative; overflow: hidden;">
-  <h3 style="margin-top: 2rem;">Change a life today! 🌍</h3>
-  <p><small>100% of your donation goes directly to clean water projects.</small></p>
+      <!-- Water background image for the donation box -->
+      <img src="images/water 1.jpg" alt="Water background" class="donate-box-bg-img">
+      <h3 style="margin-top: 2rem;">Change a life today! 🌍</h3>
+      <p><small>100% of your donation goes directly to clean water projects.</small></p>
 
-  <div class="donation-options" style="margin: 1rem 0;">
-    <label><input type="radio" name="frequency" value="one-time" checked /> One-Time</label>
-    <label><input type="radio" name="frequency" value="monthly" /> Monthly</label>
-  </div>
+      <div class="donation-options" style="margin: 1rem 0;">
+        <label><input type="radio" name="frequency" value="one-time" checked /> One-Time</label>
+        <label><input type="radio" name="frequency" value="monthly" /> Monthly</label>
+      </div>
 
-  <div class="tier-buttons" style="margin-bottom: 0.8rem;">
-    <button onclick="setAmount(25)" style="margin: 0 0.3rem;">$25</button>
-    <button onclick="setAmount(50)" style="margin: 0 0.3rem;">$50</button>
-    <button onclick="setAmount(100)" style="margin: 0 0.3rem;">$100</button>
-  </div>
+      <div class="tier-buttons" style="margin-bottom: 0.8rem;">
+        <button onclick="setAmount(25)" style="margin: 0 0.3rem;">$25</button>
+        <button onclick="setAmount(50)" style="margin: 0 0.3rem;">$50</button>
+        <button onclick="setAmount(100)" style="margin: 0 0.3rem;">$100</button>
+      </div>
 
-  <input type="number" id="amount" placeholder="$ Enter Amount" style="padding: 0.5rem; width: 70%; border-radius: 10px; border: 1px solid #ccc;" min="1">
+      <input type="number" id="amount" placeholder="$ Enter Amount" style="padding: 0.5rem; width: 70%; border-radius: 10px; border: 1px solid #ccc;" min="1">
 
-  <br><br>
-  <button id="donateBtn" style="background: #003366; padding: 0.6rem 1.2rem; border: none; border-radius: 25px; color: #fff; font-weight: bold; font-size: 1rem; box-shadow: 0 5px 10px rgba(255, 78, 80, 0.3); cursor: pointer;">JOIN TODAY</button>
+      <br><br>
+      <button id="donateBtn" style="background: #003366; padding: 0.6rem 1.2rem; border: none; border-radius: 25px; color: #fff; font-weight: bold; font-size: 1rem; box-shadow: 0 5px 10px rgba(255, 78, 80, 0.3); cursor: pointer;">JOIN TODAY</button>
 
-  <div id="thankYouMsg" style="margin-top: 1rem; font-weight: bold; color: #0a5c2d; display: none;"></div>
-</div>
+      <div id="thankYouMsg" style="margin-top: 1rem; font-weight: bold; color: #0a5c2d; display: none;"></div>
+    </div>
 
     </div>
   </section>
